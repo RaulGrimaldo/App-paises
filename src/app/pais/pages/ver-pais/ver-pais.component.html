@@ -40,10 +40,10 @@
         <div class="col">
 
             <span
-                    *ngFor="let t of pais[0].translations | keyvalue"        
+                    *ngFor="let translation of pais[0].translations | keyvalue"        
                     class="badge bg-primary mr-5"   
             >          
-                    {{ t.value.official }}   
+                    {{ translation.value.official }}   
             </span>
 
         </div>
