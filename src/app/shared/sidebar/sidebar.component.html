@@ -1,0 +1,44 @@
+
+
+
+
+<div class="row container mt-4">
+    
+    <div class="col-3">
+        <h2>Busquedas: </h2>
+        <hr />
+        <ul class="list-group">
+    
+            <li 
+                routerLink=""
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true}"
+                class="list-group-item">
+                Buscar país
+            </li>
+            <li 
+                routerLink="capital"
+                routerLinkActive="active"
+                class="list-group-item">
+                Buscar capital
+            </li>
+            <li 
+                routerLink="region"
+                routerLinkActive="active"
+                class="list-group-item">
+                Buscar región
+            </li>
+        </ul>
+        
+    </div>
+    
+    <div class="col">
+        
+        <router-outlet></router-outlet>
+        
+    </div>
+
+</div>
+
+
+
