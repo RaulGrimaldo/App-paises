@@ -1,29 +1,39 @@
-<h2>Por país</h2>
-<hr />
+<div class="animate__animated animate__fadeInLeftBig animate__faster">
+  <h2>Por país</h2>
+  <hr />
 
-<div class="row">
+  <div class="row">
 
-  <div class="col">
-    <app-pais-input
-    (onEnter)="buscar( $event)"
-    (onDebounce)="sugerencias($event)"
-    placeholder="Buscar país..."
-    >
-    </app-pais-input>
+    <div class="col">
+      <app-pais-input
+      (onEnter)="buscar( $event)"
+      (onDebounce)="sugerencias($event)"
+      placeholder="Buscar país..."
+      >
+      </app-pais-input>
+    </div>
+
   </div>
 
-</div>
+  <ul *ngIf="mostrarSugerencias" class="list-group">
+    <li *ngFor="let paisSugerido of paisesSugeridos" class="list-group-item list-group-item-action">
+      <a class="navlink" [routerLink]="['pais', paisSugerido.cca2]">{{paisSugerido.name.common}}</a>
+    </li>
+    <li class="list-group-item list-group-item-action" (click)="buscarSugerido(termino)">
+      <a class="navlink">Buscar: "{{termino}}"</a>
+    </li>
+  </ul>
+  <hr />
 
-<hr />
+  <div class="alert alert-danger" *ngIf="hayError">
+    No sé encontro nada con el término: {{termino}}
+  </div>
 
-<div class="alert alert-danger" *ngIf="hayError">
-  No sé encontro nada con el término: {{termino}}
-</div>
+  <div *ngIf="paises.length > 0" class="row">
+    <div class="col">
 
-<div *ngIf="paises.length > 0" class="row">
-  <div class="col">
+      <app-pais-tabla [paises]="paises"></app-pais-tabla>
 
-    <app-pais-tabla [paises]="paises"></app-pais-tabla>
-
+    </div>
   </div>
 </div>
